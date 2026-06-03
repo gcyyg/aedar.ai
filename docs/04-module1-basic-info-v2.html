@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh">
+<meta charset="utf-8" />
+<title>CEDAR 模块一：基础信息 - 数据卡片版</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+:root{--bg:#0a0f1a;--card:#111827;--border:#1f2937;--fg:#f3f4f6;--muted:#6b7280;--green:#10b981}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:13px system-ui,sans-serif;margin:0;padding:40px 24px}
+.wrapper{max-width:1100px;margin:0 auto}
+.ml{display:inline-flex;align-items:center;gap:8px;background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.3);padding:6px 14px;border-radius:20px;font-size:12px;color:#818cf8;margin-bottom:20px}
+.ml span{font-size:16px}
+h2{font-size:20px;font-weight:700;margin:0 0 4px}
+.sub{font-size:12px;color:var(--muted);margin:0 0 20px}
+.sk{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.tb{display:inline-flex;align-items:center;gap:6px;background:rgba(99,102,241,.2);border:1px solid rgba(99,102,241,.4);padding:6px 16px;border-radius:8px;font-size:15px;font-weight:700;color:#a5b4fc}
+.tb .mk{font-size:11px;color:#818cf8;font-weight:400}
+.kv{background:#111827;border:1px solid #1f2937;border-radius:12px;padding:16px;min-width:140px;flex:1;text-align:center}
+.kv.dark{background-image:linear-gradient(180deg,#0d1420 0%,#111827 100%)}
+.kk{font-size:10px;color:#6b7280;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;display:block}
+.kd{font-size:22px;font-weight:700;color:#f3f4f6}
+.ks{font-size:11px;color:#6b7280;margin-top:4px}
+.green{color:#10b981}
+.accent{color:#818cf8}
+.badge{display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:600;background:rgba(16,185,129,.15);color:#34d399;border:1px solid rgba(16,185,129,.3)}
+.ir{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid #1f2937}
+.ir:last-child{border-bottom:none}
+.ik{font-size:13px;color:#6b7280}
+.iv{font-size:14px;font-weight:600}
+.sep{border:none;border-top:1px solid #1f2937;margin:12px 0}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div class="ml"><span>01</span> 基础信息 / Basic Information</div>
+
+  <div class="sk">公司概览 Company Overview</div>
+  <div class="row" style="margin-bottom:24px">
+    <div class="kv dark" style="min-width:200px;text-align:left;flex:2">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;flex-wrap:wrap;gap:8px">
+        <div>
+          <h2>英伟达 NVIDIA</h2>
+          <div class="sub">全球领先的GPU芯片设计与人工智能加速器公司</div>
+        </div>
+        <div class="tb">NVDA <span class="mk">NASDAQ</span></div>
+      </div>
+      <div class="row">
+        <div style="flex:1"><span class="kk">所属行业</span><div class="kd" style="font-size:14px">半导体</div></div>
+        <div style="flex:1"><span class="kk">所属赛道</span><div class="kd accent" style="font-size:14px">AI 人工智能</div></div>
+        <div style="flex:1"><span class="kk">赛道评级</span><span class="badge">S 级</span></div>
+        <div style="flex:1"><span class="kk">国家地区</span><div class="kd" style="font-size:14px">美国</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sk">估值指标 Valuation Metrics</div>
+  <div class="row" style="margin-bottom:24px">
+    <div class="kv"><span class="kk">总市值</span><div class="kd accent">2.87T</div><div class="ks">约 2,870 亿美元</div></div>
+    <div class="kv"><span class="kk">市盈率 PE</span><div class="kd">65.4x</div><div class="ks">TTM 滚动</div></div>
+    <div class="kv"><span class="kk">市销率 PS</span><div class="kd">35.2x</div><div class="ks">TTM</div></div>
+    <div class="kv"><span class="kk">PEG</span><div class="kd green">0.82</div><div class="ks">低估 &lt;1</div></div>
+    <div class="kv"><span class="kk">ROE</span><div class="kd green">43.7%</div><div class="ks">优秀 &gt;20%</div></div>
+  </div>
+
+  <div class="sk">增长指标 Growth Metrics</div>
+  <div class="row" style="margin-bottom:24px">
+    <div class="kv"><span class="kk">营收增长率</span><div class="kd green">+122.4%</div><div class="ks">近2年CAGR</div></div>
+    <div class="kv"><span class="kk">利润增长率</span><div class="kd green">+165.8%</div><div class="ks">近2年CAGR</div></div>
+    <div class="kv"><span class="kk">分析师评级</span><div class="kd" style="font-size:15px">强烈买入</div><div class="ks">共42位覆盖</div></div>
+    <div class="kv"><span class="kk">目标价</span><div class="kd">$1,100</div><div class="ks">分析师中位数</div></div>
+  </div>
+
+  <div class="sk">详细信息 Details</div>
+  <div style="background:#111827;border:1px solid #1f2937;border-radius:12px;padding:24px">
+    <div class="ir"><span class="ik">上市交易所</span><span class="iv">NASDAQ Global Select</span></div>
+    <div class="ir"><span class="ik">CEO</span><span class="iv">Jensen Huang 黄仁勋</span></div>
+    <div class="ir"><span class="ik">成立时间</span><span class="iv">1993 年</span></div>
+    <div class="ir"><span class="ik">员工数量</span><span class="iv">29,600 人</span></div>
+    <div class="ir"><span class="ik">主营业务</span><span class="iv">GPU / AI 加速卡 / 数据中心</span></div>
+    <div class="ir"><span class="ik">52周最高</span><span class="iv">$974.00</span></div>
+    <div class="ir"><span class="ik">52周最低</span><span class="iv">$395.50</span></div>
+    <div class="ir"><span class="ik">股息收益率</span><span class="iv">0.03%</span></div>
+  </div>
+</div>
+</body>
+</html>
