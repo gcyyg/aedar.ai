@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh">
+<meta charset="utf-8" />
+<title>CEDAR Module 2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+:root{--bg:#0a0f1a;--card:#111827;--border:#1f2937;--fg:#f3f4f6;--muted:#6b7280}*{box-sizing:border-box}body{background:var(--bg);color:var(--fg);font:13px system-ui,sans-serif;margin:0;padding:40px 24px}.wrapper{max-width:1100px;margin:0 auto}.ml{display:inline-flex;align-items:center;gap:8px;background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.3);padding:6px 14px;border-radius:20px;font-size:12px;color:#818cf8;margin-bottom:20px}.ml span{font-size:16px}.sk{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px}.kv{background:#111827;border:1px solid #1f2937;border-radius:12px;padding:16px;min-width:130px;flex:1;text-align:center;position:relative;overflow:hidden}.kv::before{content:"";position:absolute;top:0;left:0;right:0;height:3px}.kv.s::before{background:#34d399}.kv.a::before{background:#6ee7b7}.kv.b::before{background:#facc15}.kv.c::before{background:#f87171}.kv.active{border-color:rgba(99,102,241,.4);background:#1a2744}.kk{font-size:10px;color:#6b7280;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;display:block}.kd{font-size:24px;font-weight:700;color:#f3f4f6}.ks{font-size:11px;color:#6b7280;margin-top:4px}.badge{display:inline-block;padding:3px 10px;border-radius:10px;font-size:11px;font-weight:700}.badge-s{background:rgba(52,211,153,.15);color:#34d399;border:1px solid rgba(52,211,153,.4)}.badge-a{background:rgba(110,231,183,.15);color:#6ee7b7;border:1px solid rgba(110,231,183,.4)}.badge-b{background:rgba(250,204,21,.15);color:#facc15;border:1px solid rgba(250,204,21,.4)}.badge-c{background:rgba(248,113,113,.15);color:#f87171;border:1px solid rgba(248,113,113,.4)}.sb{height:64px;background:#111827;border:1px solid #1f2937;border-radius:12px;display:flex;align-items:center;padding:0 24px;margin-bottom:24px}.sn{font-size:40px;font-weight:700;color:#818cf8;margin-right:24px;min-width:60px}.sb-body{flex:1}.sb-name{font-size:15px;font-weight:700;margin-bottom:8px}.gauge{width:100%;height:6px;background:#1f2937;border-radius:3px;overflow:hidden}.gfill{height:100%;border-radius:3px}.sb-grade{margin-left:auto;text-align:center}.rr{display:flex;align-items:center;padding:11px 16px;border-bottom:1px solid #1f2937}.rr:last-child{border-bottom:none}.rr:hover{background:#1a2332}.rr.active{background:#1a2744;border-left:3px solid #818cf8}.rn{font-size:11px;color:#6b7280;min-width:20px}.rname{flex:1;font-size:14px;font-weight:600;margin-left:10px}.rbar-wrap{flex:2;height:5px;background:#1f2937;border-radius:3px;overflow:hidden;margin:0 10px}.rbar{height:100%;border-radius:3px}.rscore{font-size:13px;font-weight:700;min-width:32px;text-align:right}.chg{font-size:12px;font-weight:600;padding:2px 8px;border-radius:6px}.chg.up{color:#34d399;background:rgba(52,211,153,.1)}.chg.dn{color:#f87171;background:rgba(248,113,113,.1)}.meth{background:#111827;border:1px solid #1f2937;border-radius:12px;padding:20px 24px;margin-bottom:24px;font-size:12px;color:#6b7280;line-height:1.8}.meth b{color:#f3f4f6}.meth-tag{display:inline-block;padding:2px 8px;background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.3);border-radius:6px;font-size:10px;color:#818cf8;margin-right:8px}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div class="ml"><span>02</span> Cedar Sector Scoring</div>
+  <div class="meth">
+    <div style="margin-bottom:8px"><span class="meth-tag">Method</span> <b>Stock Sector / Track Rating</b></div>
+    <div>For a given stock, find its <b>sector/track</b>, then rate the track based on recent performance</div>
+    <div>Score = <b>1M Return x 60%</b> + <b>1W Return x 40%</b> normalized to 0-100 &middot; Grades: <b>S(80+)/A(60+)/B(40+)/C(&lt;40)</b></div>
+  </div>
+  <div class="sk">Stock Sector / Track Rating for Selected Stock</div>
+  <div class="sb">
+    <div class="sn">87</div>
+    <div class="sb-body">
+      <div class="sb-name">NVDA &middot; NVIDIA Corp</div>
+      <div style="font-size:12px;color:#818cf8;margin-top:2px">Track: <b>AI Artificial Intelligence</b></div>
+      <div style="margin-top:6px;font-size:12px;color:#6b7280">1M: <b style="color:#34d399">+12.8%</b> &nbsp; 1W: <b style="color:#34d399">+5.2%</b></div>
+      <div style="margin-top:8px"><div class="gauge"><div class="gfill" style="width:87%;background:#818cf8"></div></div></div>
+    </div>
+    <div class="sb-grade">
+      <span class="badge badge-s">S</span>
+      <div style="font-size:10px;color:#6b7280;margin-top:4px">87/100</div>
+    </div>
+  </div>
+  <div class="sk">Stocks in Same Track (AI) - Ranked by Sector Score</div>
+  <div style="background:#111827;border:1px solid #1f2937;border-radius:12px;overflow:hidden">
+    <div class="rr active"><span class="rn">1</span><span class="rname">NVDA <span style="color:#6b7280;font-weight:400">NVIDIA</span></span><span style="font-size:12px;color:#818cf8;min-width:60px">AI</span><span class="chg up">+5.2%</span><span class="chg up">+12.8%</span><div class="rbar-wrap"><div class="rbar" style="width:87%;background:#34d399"></div></div><span class="rscore" style="color:#34d399">87</span></div>
+    <div class="rr"><span class="rn">2</span><span class="rname">TSM <span style="color:#6b7280;font-weight:400">Taiwan Semi</span></span><span style="font-size:12px;color:#818cf8;min-width:60px">Semicon</span><span class="chg up">+3.1%</span><span class="chg up">+9.4%</span><div class="rbar-wrap"><div class="rbar" style="width:82%;background:#34d399"></div></div><span class="rscore" style="color:#34d399">82</span></div>
+    <div class="rr"><span class="rn">3</span><span class="rname">ASML <span style="color:#6b7280;font-weight:400">ASML Holding</span></span><span style="font-size:12px;color:#818cf8;min-width:60px">Semicon</span><span class="chg up">+2.8%</span><span class="chg up">+8.1%</span><div class="rbar-wrap"><div class="rbar" style="width:79%;background:#6ee7b7"></div></div><span class="rscore" style="color:#6ee7b7">79</span></div>
+    <div class="rr"><span class="rn">4</span><span class="rname">MRVL <span style="color:#6b7280;font-weight:400">Marvell Tech</span></span><span style="font-size:12px;color:#818cf8;min-width:60px">Semicon</span><span class="chg up">+1.5%</span><span class="chg up">+5.3%</span><div class="rbar-wrap"><div class="rbar" style="width:71%;background:#6ee7b7"></div></div><span class="rscore" style="color:#6ee7b7">71</span></div>
+    <div class="rr"><span class="rn">5</span><span class="rname">FSD <span style="color:#6b7280;font-weight:400">FSD Pharma</span></span><span style="font-size:12px;color:#818cf8;min-width:60px">AI</span><span class="chg up">+4.1%</span><span class="chg up">+11.2%</span><div class="rbar-wrap"><div class="rbar" style="width:69%;background:#6ee7b7"></div></div><span class="rscore" style="color:#6ee7b7">69</span></div>
+    <div class="rr"><span class="rn">6</span><span class="rname">LI <span style="color:#6b7280;font-weight:400">Li Auto</span></span><span style="font-size:12px;color:#818cf8;min-width:60px">EV</span><span class="chg dn">-0.8%</span><span class="chg dn">+2.4%</span><div class="rbar-wrap"><div class="rbar" style="width:58%;background:#facc15"></div></div><span class="rscore" style="color:#facc15">58</span></div>
+    <div class="rr"><span class="rn">7</span><span class="rname">BABA <span style="color:#6b7280;font-weight:400">Alibaba</span></span><span style="font-size:12px;color:#818cf8;min-width:60px">E-comm</span><span class="chg dn">-3.2%</span><span class="chg dn">-7.5%</span><div class="rbar-wrap"><div class="rbar" style="width:45%;background:#f87171"></div></div><span class="rscore" style="color:#f87171">45</span></div>
+    <div class="rr"><span class="rn">8</span><span class="rname">JD <span style="color:#6b7280;font-weight:400">JD.com</span></span><span style="font-size:12px;color:#818cf8;min-width:60px">E-comm</span><span class="chg dn">-2.9%</span><span class="chg dn">-6.1%</span><div class="rbar-wrap"><div class="rbar" style="width:41%;background:#f87171"></div></div><span class="rscore" style="color:#f87171">41</span></div>
+  </div>
+</div>
+</body>
+</html>
