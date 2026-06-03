@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh">
+<meta charset="utf-8" />
+<title>CEDAR 用户分析流程图</title>
+<style>
+:root{--bg:#0f172a;--fg:#e2e8f0;--muted:#64748b;--line:#475569}
+body{background:var(--bg);color:var(--fg);font:14px system-ui,sans-serif;margin:0}
+main{max-width:1100px;margin:32px auto;padding:0 24px}
+svg{width:100%;display:block}
+.node{stroke:var(--line);stroke-width:1.5}
+.edge{stroke:var(--line);stroke-width:1.5;fill:none;marker-end:url(#arr)}
+.zone{fill:none;stroke:var(--line);stroke-width:1;stroke-dasharray:6 4;opacity:.7}
+text{font-size:13px;fill:var(--fg)}
+.small{font-size:11px;fill:var(--muted)}
+.zone-label{font-size:11px;fill:var(--muted)}
+.title{font-size:17px;font-weight:700}
+.arrow{fill:var(--line)}
+.decision{fill:#3d2a0a}
+.action{fill:#1e3a5f}
+.result{fill:#0f3d3d}
+.score{fill:#312e81}
+</style>
+<main>
+<svg viewBox="0 0 960 720" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" class="arrow"/></marker></defs>
+<text x="20" y="30" class="title">CEDAR 用户分析流程图</text>
+<text x="20" y="48" class="small">User Analysis Flow — V1.0</text>
+
+<rect x="400" y="60" width="160" height="44" rx="22" class="node action"/>
+<text x="480" y="88" text-anchor="middle" font-weight="600">输入股票代码</text>
+<path d="M480 104 L540 135 L480 166 L420 135 Z" class="node decision"/>
+<text x="480" y="138" text-anchor="middle" font-size="12">路由判断</text>
+<text x="480" y="150" text-anchor="middle" class="small">美股/A股</text>
+<path d="M480 166 L480 195" class="edge" marker-end="url(#arr)"/>
+<text x="490" y="182" class="small">解析代码</text>
+<text x="180" y="240" class="small">美股分支</text>
+<rect x="60" y="250" width="160" height="44" rx="6" class="node action"/>
+<text x="140" y="278" text-anchor="middle" font-weight="600">Finnhub API</text>
+<text x="140" y="295" text-anchor="middle" class="small">行情 + 财务数据</text>
+<text x="720" y="240" class="small">A股分支</text>
+<rect x="600" y="250" width="160" height="44" rx="6" class="node action"/>
+<text x="680" y="278" text-anchor="middle" font-weight="600">Tushare Pro</text>
+<text x="680" y="295" text-anchor="middle" class="small">行情 + K线 + 财务</text>
+<path d="M420 135 L220 135 L220 250" class="edge" marker-end="url(#arr)"/>
+<path d="M540 135 L740 135 L740 250" class="edge" marker-end="url(#arr)"/>
+<rect x="60" y="310" width="160" height="44" rx="6" class="node result"/>
+<text x="140" y="338" text-anchor="middle" font-weight="600">数据汇聚</text>
+<text x="140" y="355" text-anchor="middle" class="small">行情/财务/K线/资金流</text>
+<rect x="600" y="310" width="160" height="44" rx="6" class="node result"/>
+<text x="680" y="338" text-anchor="middle" font-weight="600">数据汇聚</text>
+<text x="680" y="355" text-anchor="middle" class="small">行情/财务/K线/资金流</text>
+<path d="M140 354 L140 390 L280 390" class="edge" marker-end="url(#arr)"/>
+<path d="M680 354 L680 390 L520 390" class="edge" marker-end="url(#arr)"/>
+<rect x="40" y="390" width="880" height="200" rx="8" class="zone"/>
+<text x="55" y="410" class="zone-label">SCORING ENGINE / 六大评分模块</text>
+<rect x="55" y="420" width="155" height="80" rx="6" class="node" style="fill:#1e293b"/>
+<text x="132" y="440" text-anchor="middle" font-weight="700">基础信息</text>
+<text x="132" y="456" text-anchor="middle" class="small">公司信息</text>
+<text x="132" y="472" text-anchor="middle" class="small">市值/PE/PS/ROE</text>
+<text x="132" y="488" text-anchor="middle" class="small">营收/利润增速</text>
+<rect x="220" y="420" width="155" height="80" rx="6" class="node" style="fill:#1e293b"/>
+<text x="297" y="440" text-anchor="middle" font-weight="700">赛道评分</text>
+<text x="297" y="456" text-anchor="middle" class="small">所属赛道</text>
+<text x="297" y="472" text-anchor="middle" class="small">AI/机器人/半导体</text>
+<text x="297" y="488" text-anchor="middle" class="small">S/A/B/C 级</text>
+<rect x="385" y="420" width="155" height="80" rx="6" class="node" style="fill:#1e293b"/>
+<text x="462" y="440" text-anchor="middle" font-weight="700">成长评分</text>
+<text x="462" y="456" text-anchor="middle" class="small">成长能力</text>
+<text x="462" y="472" text-anchor="middle" class="small">收入增速/利润增速</text>
+<text x="462" y="488" text-anchor="middle" class="small">行业增速/市场空间</text>
+<rect x="550" y="420" width="155" height="80" rx="6" class="node" style="fill:#1e293b"/>
+<text x="627" y="440" text-anchor="middle" font-weight="700">估值评分</text>
+<text x="627" y="456" text-anchor="middle" class="small">估值水平</text>
+<text x="627" y="472" text-anchor="middle" class="small">PE/PS/PEG/DCF</text>
+<text x="627" y="488" text-anchor="middle" class="small">同业比较</text>
+<rect x="715" y="420" width="155" height="80" rx="6" class="node" style="fill:#1e293b"/>
+<text x="792" y="440" text-anchor="middle" font-weight="700">风险评分</text>
+<text x="792" y="456" text-anchor="middle" class="small">风险维度</text>
+<text x="792" y="472" text-anchor="middle" class="small">负债/现金流</text>
+<text x="792" y="488" text-anchor="middle" class="small">政策/周期风险</text>
+<rect x="55" y="510" width="155" height="65" rx="6" class="node" style="fill:#1e293b"/>
+<text x="132" y="530" text-anchor="middle" font-weight="700">市场温度</text>
+<text x="132" y="546" text-anchor="middle" class="small">技术面/情绪面</text>
+<text x="132" y="562" text-anchor="middle" class="small">资金面</text>
+<path d="M480 590 L480 620" class="edge" marker-end="url(#arr)"/>
+<rect x="280" y="620" width="400" height="50" rx="8" class="node score"/>
+<text x="480" y="642" text-anchor="middle" font-weight="700">杉树综合评分 + AI投资总结</text>
+<text x="480" y="660" text-anchor="middle" class="small">钻石/黄金/白银/观察/回避 + 500字摘要</text>
+<path d="M480 670 L480 695" class="edge" marker-end="url(#arr)"/>
+<rect x="280" y="695" width="400" height="20" rx="4" class="node action"/>
+<text x="480" y="710" text-anchor="middle" class="small">输出完整投资分析报告</text>
+</svg></main></html>

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh">
+<meta charset="utf-8" />
+<title>CEDAR 评分模块详情</title>
+<style>
+:root{--bg:#0f172a;--fg:#e2e8f0;--muted:#64748b;--line:#475569}
+body{background:var(--bg);color:var(--fg);font:14px system-ui,sans-serif;margin:0}
+main{max-width:1100px;margin:32px auto;padding:0 24px}
+svg{width:100%;display:block}
+.node{stroke:var(--line);stroke-width:1.5}
+.edge{stroke:var(--line);stroke-width:1.5;fill:none;marker-end:url(#arr)}
+.zone{fill:none;stroke:var(--line);stroke-width:1;stroke-dasharray:6 4;opacity:.7}
+text{font-size:13px;fill:var(--fg)}
+.small{font-size:11px;fill:var(--muted)}
+.zone-label{font-size:11px;fill:var(--muted)}
+.title{font-size:17px;font-weight:700}
+.arrow{fill:var(--muted)}
+</style>
+<main>
+<svg viewBox="0 0 960 680" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" class="arrow"/></marker></defs>
+<text x="20" y="30" class="title">CEDAR 评分模块详解</text>
+<text x="20" y="48" class="small">CEDAR Scoring Modules Detail — V1.0</text>
+<rect x="10" y="70" width="940" height="90" rx="8" class="zone"/>
+<rect x="10" y="70" width="200" height="90" rx="8" class="node" style="fill:#1e3a5f"/>
+<text x="110" y="98" text-anchor="middle" font-weight="700">模块1 基础信息</text>
+<text x="110" y="120" text-anchor="middle" class="small">权重: 20%</text>
+<text x="225" y="95" class="small">公司名称/行业/赛道</text>
+<text x="225" y="115" class="small">市值/PE/PS/PEG/ROE</text>
+<text x="225" y="135" class="small">营收增长率/利润增长率</text>
+<text x="880" y="118" text-anchor="middle" font-weight="700" style="fill:#6366f1">20%</text>
+<rect x="10" y="170" width="940" height="90" rx="8" class="zone"/>
+<rect x="10" y="170" width="200" height="90" rx="8" class="node" style="fill:#2d1b4e"/>
+<text x="110" y="198" text-anchor="middle" font-weight="700">模块2 赛道评分</text>
+<text x="110" y="220" text-anchor="middle" class="small">权重: 20%</text>
+<text x="225" y="195" class="small">覆盖: AI/机器人/半导体/能源</text>
+<text x="225" y="215" class="small">商业航天/金融科技/消费/医疗</text>
+<text x="225" y="235" class="small">输出: S/A/B/C 级</text>
+<text x="880" y="218" text-anchor="middle" font-weight="700" style="fill:#6366f1">20%</text>
+<rect x="10" y="270" width="940" height="90" rx="8" class="zone"/>
+<rect x="10" y="270" width="200" height="90" rx="8" class="node" style="fill:#0f3d3d"/>
+<text x="110" y="298" text-anchor="middle" font-weight="700">模块3 成长评分</text>
+<text x="110" y="320" text-anchor="middle" class="small">权重: 20%</text>
+<text x="225" y="295" class="small">收入增速(2年CAGR)</text>
+<text x="225" y="315" class="small">利润增速/行业增速/市场空间</text>
+<text x="225" y="335" class="small">成长指数: 0-100分</text>
+<text x="880" y="318" text-anchor="middle" font-weight="700" style="fill:#6366f1">20%</text>
+<rect x="10" y="370" width="940" height="90" rx="8" class="zone"/>
+<rect x="10" y="370" width="200" height="90" rx="8" class="node" style="fill:#3d2a0a"/>
+<text x="110" y="398" text-anchor="middle" font-weight="700">模块4 估值评分</text>
+<text x="110" y="420" text-anchor="middle" class="small">权重: 20%</text>
+<text x="225" y="395" class="small">PE/PS/PEG/DCF现金流折现</text>
+<text x="225" y="415" class="small">同业横向比较</text>
+<text x="225" y="435" class="small">输出: 高估/合理/低估</text>
+<text x="880" y="418" text-anchor="middle" font-weight="700" style="fill:#6366f1">20%</text>
+<rect x="10" y="470" width="940" height="90" rx="8" class="zone"/>
+<rect x="10" y="470" width="200" height="90" rx="8" class="node" style="fill:#3d1a1a"/>
+<text x="110" y="498" text-anchor="middle" font-weight="700">模块5 风险评分</text>
+<text x="110" y="520" text-anchor="middle" class="small">权重: 20%</text>
+<text x="225" y="495" class="small">负债水平/经营现金流质量</text>
+<text x="225" y="515" class="small">行业竞争/政策风险/周期风险</text>
+<text x="225" y="535" class="small">低/中/高风险</text>
+<text x="880" y="518" text-anchor="middle" font-weight="700" style="fill:#6366f1">20%</text>
+<rect x="10" y="570" width="940" height="90" rx="8" class="zone"/>
+<rect x="10" y="570" width="200" height="90" rx="8" class="node" style="fill:#312e81"/>
+<text x="110" y="598" text-anchor="middle" font-weight="700">模块6 市场温度</text>
+<text x="110" y="620" text-anchor="middle" class="small">权重: 20%</text>
+<text x="225" y="595" class="small">技术面: 均线/K线形态</text>
+<text x="225" y="615" class="small">情绪面: MACD/RSI/活跃市值</text>
+<text x="225" y="635" class="small">资金面: 主力净流入</text>
+<text x="880" y="618" text-anchor="middle" font-weight="700" style="fill:#6366f1">20%</text>
+<rect x="10" y="618" width="940" height="52" rx="8" class="node" style="fill:#0f172a;stroke:#6366f1;stroke-width:2"/>
+<text x="30" y="645" font-weight="700">杉树综合评分 = 赛道20% + 成长20% + 估值20% + 风险20% + 趋势20%</text>
+<text x="750" y="632" class="small">等级: 钻石级(85+) / 黄金级(70-84) / 白银级(55-69)</text>
+<text x="750" y="652" class="small">观察级(40-54) / 回避级(&lt;40)</text>
+</svg></main></html>
