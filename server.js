@@ -3,6 +3,7 @@ const axios = require("axios");
 const cron = require("node-cron");
 const fs = require("fs");
 const path = require("path");
+const { execSync } = require("child_process");
 
 const app = express();
 const PORT = 8080;
@@ -86,7 +87,7 @@ async function fetchIndexValuation() {
     } catch (e) { return { pe: 12.5, pb: 1.45, tsCode: "sh000300" }; }
 }
 
-function calcMarketTemp(raw) {
+function calcMarketTemp(raw, sectors) {
     const closes = raw.csi300.map(k => k.close);
     const last = closes[closes.length - 1];
     const ma200 = closes.slice(-200).reduce((a, b) => a + b, 0) / Math.min(200, closes.length);
@@ -119,10 +120,52 @@ function calcMarketTemp(raw) {
             { name: "人民币汇率", value: uc.toFixed(2), score: score5, flag: uc < 7.3 ? "Strong" : "Weak" },
             { name: "认沽认购比", value: "N/A", score: score6, flag: "Simulated" }
         ],
+        sectors: sectors && sectors.length > 0 ? sectors.slice(0, 20) : [],
+        sectorSummary: (() => {
+            if (!sectors || sectors.length === 0) return { topSector: "N/A", bottomSector: "N/A", positiveCount: 0, totalCount: 0 };
+            const pos = sectors.filter(s => s.avgPct > 0).length;
+            return { topSector: sectors[0].name, bottomSector: sectors[sectors.length - 1].name, positiveCount: pos, totalCount: sectors.length };
+        })(),
         updatedAt: new Date().toISOString()
     };
 }
 
+
+// 申万行业板块 from Sina via Python GBK decoding
+async function fetchSinaSectors() {
+    try {
+        const result = execSync('python3 /tmp/sina_sectors.py', { maxBuffer: 5 * 1024 * 1024 });
+        return JSON.parse(result.toString());
+    } catch (e) { console.error('Sina sectors error:', e.message); return []; }
+}
+
+
+// CSI300 PE/PB from Tencent
+async function fetchCSI300Valuation() {
+    try {
+        const r = await axios.get("https://qt.gtimg.cn/q=sh000300", { headers: { "User-Agent": "Mozilla/5.0", "Referer": "https://finance.qq.com" }, timeout: 5000 });
+        const match = r.data.match(/"([^"]+)"/);
+        if (!match) return { pe: 12.5, pb: 1.45 };
+        const parts = match[1].split('~');
+        const f62 = parseFloat(parts[62]) || 0;
+        const f63 = parseFloat(parts[63]) || 0;
+        return { pe: (f62 > 5 && f62 < 200) ? f62 : 12.5, pb: (f63 > 0 && f63 < 50) ? f63 : 1.45 };
+    } catch (e) { return { pe: 12.5, pb: 1.45 }; }
+}
+
+// 50ETF PCR from Eastmoney
+async function fetchPCROptions() {
+    try {
+        const r = await axios.get("https://push2ex.eastmoney.com/api/qt/ulist/get?fltt=2&invt=2&fields=f12,f14,f2,f3,f8,f10&secids=1.510050,1.510051,1.510059,1.510060,1.510061,1.510062", { timeout: 5000 });
+        const diff = r.data?.data?.diff;
+        if (!diff || diff.length < 2) return null;
+        const items = diff.filter(i => i.f12 && String(i.f12).startsWith("51005"));
+        const callVol = items.filter(i => [1,3,5,7,9].includes(parseInt(String(i.f12).slice(-1)) % 10)).reduce((s, i) => s + (i.f10 || 0), 0);
+        const putVol = items.filter(i => [2,4,6,8,0].includes(parseInt(String(i.f12).slice(-1)) % 10)).reduce((s, i) => s + (i.f10 || 0), 0);
+        if (putVol > 0 && callVol > 0) return { pcr: (putVol / callVol).toFixed(4), callVol: Math.round(callVol), putVol: Math.round(putVol) };
+        return null;
+    } catch (e) { return null; }
+}
 // ==================== 缓存更新 ====================
 let marketCache = null;
 let marketCacheTime = 0;
@@ -131,11 +174,11 @@ const CACHE_TTL = 5 * 60 * 1000; // 5分钟
 async function updateMarketCache() {
     console.log("[Cache] Updating market data...");
     try {
-        const [csi300, shibor, fx, margin] = await Promise.all([
-            fetchCSI300(), fetchShibor(), fetchFX(), fetchMargin()
+        const [csi300, shibor, fx, margin, sectors] = await Promise.all([
+            fetchCSI300(), fetchShibor(), fetchFX(), fetchMargin(), fetchSinaSectors()
         ]);
         if (!csi300) { console.error("[Cache] CSI300 data missing"); return; }
-        marketCache = calcMarketTemp({ csi300, shibor, fx, margin });
+        marketCache = calcMarketTemp({ csi300, shibor, fx, margin }, sectors);
         marketCacheTime = Date.now();
         fs.writeFileSync(path.join(DATA_DIR, "market_temp.json"), JSON.stringify(marketCache, null, 2));
         console.log("[Cache] Updated. Score:", marketCache.score, "| Label:", marketCache.label);
@@ -182,14 +225,14 @@ app.get("/api/indicator/margin", async (req, res) => {
 
 app.get("/api/indicator/valuation", async (req, res) => {
     try {
-        const data = await fetchIndexValuation();
+        const data = await fetchCSI300Valuation();
         res.json({ success: true, data });
     } catch (e) { res.status(500).json({ success: false, message: e.message }); }
 });
 
 app.get("/api/indicator/sector", async (req, res) => {
     try {
-        const data = await fetchSectorData();
+        const data = await fetchSinaSectors();
         res.json({ success: true, data });
     } catch (e) { res.status(500).json({ success: false, message: e.message }); }
 });

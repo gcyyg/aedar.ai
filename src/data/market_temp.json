@@ -2,9 +2,9 @@
   "score": 63,
   "label": "Cool",
   "csi300": {
-    "close": 4990.5,
-    "ma200": "4615.40",
-    "realizedVol": "16.36"
+    "close": 4967.07,
+    "ma200": "4615.29",
+    "realizedVol": "15.91"
   },
   "fx": {
     "usdCny": "6.7626"
@@ -18,14 +18,14 @@
   "indicators": [
     {
       "name": "沪深300 MA200",
-      "value": 4991,
-      "score": 91,
+      "value": 4967,
+      "score": 88,
       "flag": "Above"
     },
     {
       "name": "恐慌波动率",
-      "value": "16.4%",
-      "score": 46,
+      "value": "15.9%",
+      "score": 47,
       "flag": "Normal"
     },
     {
@@ -53,5 +53,133 @@
       "flag": "Simulated"
     }
   ],
-  "updatedAt": "2026-06-03T04:55:01.915Z"
+  "sectors": [
+    {
+      "name": "次新股",
+      "count": 135,
+      "avgPct": 4.446,
+      "topStock": "sh688635"
+    },
+    {
+      "name": "电子器件",
+      "count": 152,
+      "avgPct": 1.01,
+      "topStock": "sz300088"
+    },
+    {
+      "name": "机械行业",
+      "count": 211,
+      "avgPct": 0.689,
+      "topStock": "sz300249"
+    },
+    {
+      "name": "有色金属",
+      "count": 72,
+      "avgPct": 0.662,
+      "topStock": "sh600255"
+    },
+    {
+      "name": "电子信息",
+      "count": 247,
+      "avgPct": 0.642,
+      "topStock": "sz300302"
+    },
+    {
+      "name": "飞机制造",
+      "count": 14,
+      "avgPct": 0.447,
+      "topStock": "sz002023"
+    },
+    {
+      "name": "仪器仪表",
+      "count": 48,
+      "avgPct": 0.43,
+      "topStock": "sz300286"
+    },
+    {
+      "name": "化工行业",
+      "count": 150,
+      "avgPct": 0.2,
+      "topStock": "sz300398"
+    },
+    {
+      "name": "汽车制造",
+      "count": 103,
+      "avgPct": 0.122,
+      "topStock": "sz000700"
+    },
+    {
+      "name": "其它行业",
+      "count": 202,
+      "avgPct": 0.109,
+      "topStock": "sh600172"
+    },
+    {
+      "name": "玻璃行业",
+      "count": 19,
+      "avgPct": 0.104,
+      "topStock": "sh603021"
+    },
+    {
+      "name": "石油行业",
+      "count": 24,
+      "avgPct": 0.083,
+      "topStock": "sh600688"
+    },
+    {
+      "name": "塑料制品",
+      "count": 33,
+      "avgPct": 0.078,
+      "topStock": "sz002735"
+    },
+    {
+      "name": "陶瓷行业",
+      "count": 8,
+      "avgPct": 0.078,
+      "topStock": "sz300409"
+    },
+    {
+      "name": "电力行业",
+      "count": 62,
+      "avgPct": 0.046,
+      "topStock": "sh600310"
+    },
+    {
+      "name": "开发区",
+      "count": 10,
+      "avgPct": 0.017,
+      "topStock": "sh600736"
+    },
+    {
+      "name": "综合行业",
+      "count": 33,
+      "avgPct": 0.013,
+      "topStock": "sh600846"
+    },
+    {
+      "name": "化纤行业",
+      "count": 26,
+      "avgPct": 0.01,
+      "topStock": "sz000936"
+    },
+    {
+      "name": "电器行业",
+      "count": 58,
+      "avgPct": -0.004,
+      "topStock": "sz300252"
+    },
+    {
+      "name": "煤炭行业",
+      "count": 41,
+      "avgPct": -0.016,
+      "topStock": "sh600403"
+    }
+  ],
+  "sectorSummary": {
+    "topSector": "次新股",
+    "bottomSector": "酿酒行业",
+    "positiveCount": 18,
+    "totalCount": 49
+  },
+  "updatedAt": "2026-06-03T05:23:53.803Z"
 }
