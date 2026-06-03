@@ -1,0 +1,57 @@
+{
+  "score": 63,
+  "label": "Cool",
+  "csi300": {
+    "close": 4990.5,
+    "ma200": "4615.40",
+    "realizedVol": "16.36"
+  },
+  "fx": {
+    "usdCny": "6.7626"
+  },
+  "shibor": {
+    "shibor3m": 1.652,
+    "shibor1y": 1.7,
+    "spread": "-4.800"
+  },
+  "margin": null,
+  "indicators": [
+    {
+      "name": "沪深300 MA200",
+      "value": 4991,
+      "score": 91,
+      "flag": "Above"
+    },
+    {
+      "name": "恐慌波动率",
+      "value": "16.4%",
+      "score": 46,
+      "flag": "Normal"
+    },
+    {
+      "name": "融资余额增速",
+      "value": "N/A",
+      "score": 65,
+      "flag": "Simulated"
+    },
+    {
+      "name": "信用利差",
+      "value": "-4.800%",
+      "score": 35,
+      "flag": "Inverted"
+    },
+    {
+      "name": "人民币汇率",
+      "value": "6.76",
+      "score": 80,
+      "flag": "Strong"
+    },
+    {
+      "name": "认沽认购比",
+      "value": "N/A",
+      "score": 60,
+      "flag": "Simulated"
+    }
+  ],
+  "updatedAt": "2026-06-03T04:55:01.915Z"
+}
